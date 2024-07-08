@@ -12,20 +12,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "core-js": "^3.24.1",
-    "css-loader": "^6.7.1",
-    "ejs": "^3.1.8",
-    "express": "^4.18.1",
-    "regenerator-runtime": "^0.13.9",
-    "style-loader": "^3.3.1"
+    "core-js": "^3.37.1",
+    "css-loader": "^6.11.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "regenerator-runtime": "^0.13.11",
+    "style-loader": "^3.3.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.18.10",
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.18.10",
-    "babel-loader": "^8.2.5",
-    "nodemon": "^2.0.19",
-    "webpack": "^5.74.0",
+    "babel-loader": "^8.3.0",
+    "nodemon": "^2.0.22",
+    "webpack": "^5.92.1",
     "webpack-cli": "^4.10.0"
   }
 }

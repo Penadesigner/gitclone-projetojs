@@ -1,16 +1,12 @@
-const HomeModel = require('../models/homeModel')
-
-HomeModel.create({
-  titulo: 'teste',
-  descricao: 'teste descricao'
-}).then(dados => console.log(dados))
-.catch(e => console.log(e))
-
-
 exports.paginaInicial = (req, res) => {
-    res.render('index');
-  };
-  
-  exports.trataPost = (req, res) => {
-    res.send('Ei, sou sua nova rota de POST.');
-  };
+  res.render('index', {
+    titulo: 'Este será o título da página',
+    numeros: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  });
+  return;
+};
+
+exports.trataPost = (req, res) => {
+  res.send(req.body);
+  return;
+};

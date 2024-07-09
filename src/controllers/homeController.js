@@ -10,3 +10,11 @@ exports.trataPost = (req, res) => {
   res.send(req.body);
   return;
 };
+
+/* TESTAR BANCO - NECESSARIO EXPORTAR A MODEL HomeModel
+const HomeModel = require('../models/homeModel')
+HomeModel.create({
+  titulo: 'nome',
+  descricao: 'teste descr'
+}).then(dados => console.log(dados)).catch(e => console.log(e))
+*/

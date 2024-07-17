@@ -23,7 +23,7 @@ async register() {
 
 valida() {
   this.cleanUp();
-
+  // se o e-mail for invalido ele adiciona ao array de erros o erro a baixo.
   if(!validator.isEmail(this.body.email)) this.errors.push('E-mail invalido');
 
   if(this.body.password.length < 3 || this.body.password.length > 50) {

@@ -1,0 +1,9 @@
+<% if (errors) { %>
+<div class="row">
+    <div class="col">
+        <% errors.forEach(erro => { %>
+      <div class="alert alert-danger"><%= erro %></div>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>

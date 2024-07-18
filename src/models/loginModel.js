@@ -3,7 +3,7 @@ const validator = require('validator');
 
 const LoginSchema = new mongoose.Schema({
   email: { type: String, required: true },
-  senha: { type: String, required: true }
+  password: { type: String, required: true }
 });
 
 const LoginModel = mongoose.model('Login', LoginSchema);
@@ -19,12 +19,18 @@ async register() {
   this.valida();
   if(this.errors.length > 0) return;
 
-  try {
-    this.user = await LoginModel.create(this.body);
-  }
-  catch(e) {
-    console.log(e);
-  }
+    // Verificar se o email já está registrado
+    const userExists = await LoginModel.findOne({ email: this.body.email });
+    if(userExists) {
+      this.errors.push('E-mail já registrado.');
+    }
+
+    try {
+      this.user = await LoginModel.create(this.body);
+    }
+    catch(e) {
+      console.log(e);
+    }
 }
 
 valida() {
@@ -35,8 +41,18 @@ valida() {
   if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
 
   // A senha precisa ter entre 3 e 50
-  if(this.body.password == undefined) {
+  if(this.body.password.length < 3 || this.body.password.length > 50) {
     this.errors.push('A senha precisa ter entre 3 e 50 caracteres.');
+  }
+
+  // A senha precisa ter letra maiuscula
+  if(!/[A-Z]/.test(this.body.password)) {
+    this.errors.push('A senha precisa ter pelo menos uma letra maiúscula.');
+  }
+
+  // A senha precisa ter numeros
+  if(!/[0-9]/.test(this.body.password)) {
+    this.errors.push('A senha precisa ter pelo menos um número.');
   }
 }
 
@@ -49,7 +65,7 @@ cleanUp() {
 
     this.body = {
       email: this.body.email,
-      pasword: this.body.pasword
+      password: this.body.password
     };
   }
 }

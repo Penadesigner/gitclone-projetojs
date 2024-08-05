@@ -1,12 +1,7 @@
-exports.index = (req, res) => {
-  res.render('index');
+const Contato = require('../models/ContatoModel');
+
+exports.index = async(req, res) => {
+  const contatos = await Contato.buscaContatos();
+  res.render('index', { contatos });
 };
 
-
-/* TESTAR BANCO - NECESSARIO EXPORTAR A MODEL HomeModel
-const HomeModel = require('../models/homeModel')
-HomeModel.create({
-  titulo: 'nome',
-  descricao: 'teste descr'
-}).then(dados => console.log(dados)).catch(e => console.log(e))
-*/
